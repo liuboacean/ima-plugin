@@ -1,104 +1,106 @@
-# Obsidian IMA Plugin
+# Ima Vault
 
-将 [IMA](https://ima.qq.com) 知识库和笔记无缝集成到 [Obsidian](https://obsidian.md)。
+Integrate [IMA](https://ima.qq.com) knowledge base and notes seamlessly into [Obsidian](https://obsidian.md).
 
-[![GitHub release](https://img.shields.io/github/v/release/liuboacean/obsidian-ima-plugin)](https://github.com/liuboacean/obsidian-ima-plugin/releases)
+[![GitHub release](https://img.shields.io/github/v/release/liuboacean/ima-plugin)](https://github.com/liuboacean/ima-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![v0.9 Screenshot](https://img.shields.io/badge/version-0.9.0-blue)
+---
 
-## ✨ 功能
+将腾讯 IMA 知识库和笔记无缝集成到 Obsidian，支持搜索、浏览、导入和阅读。
 
-- 🔍 **搜索笔记** — 按标题或正文搜索 IMA 笔记，支持分页加载
-- 📁 **浏览笔记本** — 直接浏览 IMA 笔记本目录，逐级查看笔记
-- 📖 **查看笔记** — 在 Obsidian 侧边栏中渲染 Markdown 格式查看笔记内容
-- 📥 **导入到 Vault** — 一键将 IMA 笔记导入为 Obsidian 的 .md 文件
-- 🧭 **导航栈** — 多层页面间自由前进/后退
-- ⌨️ **命令面板** — 快捷键 Cmd/Ctrl+P 唤出 IMA 面板或直接搜索
+---
 
-## 📦 安装
+## ✨ Features / 功能
 
-### 手动安装
+- 🔍 **Search Notes** — Search IMA notes by title or content, with pagination support
+- 📁 **Browse Notebooks** — Browse IMA notebook directories, drill into notes
+- 📖 **View Notes** — Render notes in Obsidian sidebar with native Markdown rendering
+- 📥 **Import to Vault** — One-click import of IMA notes as .md files into your vault
+- 🧭 **Navigation Stack** — Forward/back navigation between multiple pages
+- ⌨️ **Command Palette** — Cmd/Ctrl+P to open IMA panel or search directly
 
-1. 从 [Releases](https://github.com/liuboacean/obsidian-ima-plugin/releases) 下载最新版本
-2. 解压到 vault 的 `.obsidian/plugins/obsidian-ima-plugin/` 目录
-3. 完全退出 Obsidian 后重新打开
-4. 在 **Settings → Community plugins** 中启用
+## 📦 Installation / 安装
 
-### 从源码
+### From Community Plugins (recommended) / 从社区插件市场安装（推荐）
 
-```bash
-git clone https://github.com/liuboacean/obsidian-ima-plugin.git
-# 将 main.js, manifest.json, styles.css 复制到
-# your-vault/.obsidian/plugins/obsidian-ima-plugin/
-```
+1. Open Obsidian → Settings → Community plugins
+2. Search for "Ima Vault"
+3. Click Install, then Enable
 
-## ⚙️ 配置
+### Manual Install / 手动安装
 
-### 获取 IMA 凭证
+1. Download the latest `main.js`, `manifest.json`, and `styles.css` from [Releases](https://github.com/liuboacean/ima-plugin/releases)
+2. Copy them to `your-vault/.obsidian/plugins/ima/`
+3. Restart Obsidian
+4. Enable in **Settings → Community plugins**
 
-1. 访问 [ima.qq.com](https://ima.qq.com) 开放平台
-2. 创建应用，获取 **Client ID** 和 **API Key**
+## ⚙️ Configuration / 配置
 
-### 插件设置
+### Get IMA Credentials / 获取 IMA 凭证
 
-1. Obsidian → Settings → Community plugins → **IMA Plugin**
-2. 填入 **Client ID** 和 **API Key**
-3. 保存即可
+1. Visit [ima.qq.com](https://ima.qq.com) Open Platform / 开放平台
+2. Create an app to get your **Client ID** and **API Key**
 
-## 🚀 使用
+### Plugin Setup / 插件设置
 
-### 方式 1：侧边栏面板
+1. Obsidian → Settings → Community plugins → **Ima Vault**
+2. Enter your **Client ID** and **API Key**
+3. Save — you're ready to go
 
-点击左侧 Ribbon 的 🔍 图标，打开 IMA 面板：
+## 🚀 Usage / 使用
 
-| Tab | 功能 |
-|-----|------|
-| **🔍 搜索** | 输入关键词搜索笔记，支持标题/正文搜索 |
-| **📁 笔记本** | 浏览所有笔记本，点击进入查看笔记列表 |
+### Method 1: Sidebar Panel
 
-### 方式 2：命令面板
+Click the 🔍 icon in the left ribbon to open the IMA panel:
 
-`Cmd/Ctrl + P` → 输入 `IMA`：
+| Tab | Description |
+|-----|-------------|
+| **🔍 Search** | Search notes by keyword (title/body) |
+| **📁 Notebooks** | Browse all notebooks, view notes inside |
 
-- **Open IMA Panel** — 打开侧边栏面板
-- **Search IMA Notes** — 直接打开搜索
-- **Browse IMA Folders** — 直接浏览笔记本
+### Method 2: Command Palette
 
-### 导入笔记
+`Cmd/Ctrl + P` → type `IMA`:
 
-在笔记详情页点击 **📥 导入到 Vault**，自动以 Markdown 格式保存到 Vault 并打开。
+- **Open IMA Panel** — Open sidebar panel
+- **Search IMA Notes** — Open search directly
+- **Browse IMA Folders** — Browse notebooks directly
 
-## 🛠️ 技术实现
+### Import Notes
 
-- 纯 JavaScript（无 TypeScript 编译依赖）
-- 使用 Obsidian `requestUrl` API 调用 IMA OpenAPI
-- `MarkdownRenderer` 原生渲染笔记内容
-- 事件绑定使用 `innerHTML` + `getElementById` + `onclick`（兼容性最佳）
+On note detail page, click **📥 Import to Vault** to save as Markdown and open in your vault.
 
-### API 端点
+## 🛠️ Technical Notes / 技术实现
 
-| 端点 | 用途 |
-|------|------|
-| `/openapi/note/v1/search_note_book` | 搜索笔记 |
-| `/openapi/note/v1/list_note_folder_by_cursor` | 列出笔记本 |
-| `/openapi/note/v1/list_note_by_folder_id` | 列出笔记本内的笔记 |
-| `/openapi/note/v1/get_doc_content` | 获取笔记内容 |
-| `/openapi/note/v1/import_doc` | 新建笔记 |
-| `/openapi/note/v1/append_doc` | 追加内容到笔记 |
+- Pure JavaScript (no TypeScript compilation dependency)
+- Uses Obsidian `requestUrl` API for IMA OpenAPI calls
+- `MarkdownRenderer` for native note rendering
+- Event binding: `innerHTML` + `getElementById` + `onclick`
+
+### API Endpoints
+
+| Endpoint | Usage |
+|----------|-------|
+| `/openapi/note/v1/search_note_book` | Search notes |
+| `/openapi/note/v1/list_note_folder_by_cursor` | List notebooks |
+| `/openapi/note/v1/list_note_by_folder_id` | List notes in notebook |
+| `/openapi/note/v1/get_doc_content` | Get note content |
+| `/openapi/note/v1/import_doc` | Create note |
+| `/openapi/note/v1/append_doc` | Append to note |
 
 ## 📝 Changelog
 
 ### v0.9.0
-- 📁 笔记本浏览功能
-- 🧭 导航栈（多层返回）
-- 🔍 标题/正文搜索切换
-- ⌨️ 新增命令面板命令
-- 📄 搜索结果分页加载
+- 📁 Browse notebooks
+- 🧭 Navigation stack
+- 🔍 Title/body search toggle
+- ⌨️ New command palette commands
+- 📄 Pagination for search results
 
 ### v0.8.1
-- 🐛 修复 MarkdownRenderer API 调用
-- 🎨 内容使用 Obsidian 原生 Markdown 渲染
+- 🐛 Fix MarkdownRenderer API call
+- 🎨 Native Markdown rendering
 
 ## 📄 License
 
