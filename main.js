@@ -762,8 +762,8 @@ class IMAPlugin extends Plugin {
     const resp = await this.app.requestUrl({
       url: 'https://ima.qq.com/openapi/v2/folder/list',
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cursor: '', limit: 5, client_id: clientId, api_key: apiKey })
+      headers: this.hdrs(),
+      body: JSON.stringify({ cursor: '', limit: 5 })
     });
     return JSON.parse(resp.text);
   }
